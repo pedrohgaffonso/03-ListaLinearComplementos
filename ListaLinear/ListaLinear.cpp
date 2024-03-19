@@ -14,8 +14,8 @@ int posicaoElemento(int valor);
 //--------------------------
 
 
-const int MAX = 10;;
-int lista[MAX]{};
+const int MAX = 10;
+int lista[MAX] = {};
 int nElementos = 0;
 
 
@@ -28,7 +28,7 @@ void menu()
 {
 	int op = 0;
 	while (op != 7) {
-		system("cls"); // somente no windows
+		//system("cls"); // somente no windows
 		cout << "Menu Lista Linear";
 		cout << endl << endl;
 		cout << "1 - Inicializar Lista \n";
@@ -63,7 +63,7 @@ void menu()
 			break;
 		}
 
-		system("pause"); // somente no windows
+		//system("pause"); // somente no windows
 	}
 }
 
@@ -105,7 +105,7 @@ void inserirElemento()
 
 		if (pos != -1)
 		{
-			cout << "Elemento já esta na lista" << endl;
+			cout << "Elemento jÃ¡ esta na lista" << endl;
 		}
 		else
 		{
@@ -122,8 +122,22 @@ void inserirElemento()
 
 void excluirElemento()
 {
+	int valor;
+	cout << "Digite o elemento que queira excluir: ";
+	cin >> valor;
+	int pos = posicaoElemento(valor);
 
+	if (pos != -1) {
+		for (int n = pos; n < nElementos; n++) {
+			lista[n] = lista[n + 1];
+		}
+		nElementos--;
 
+	}
+	else
+	{
+		cout << "O elemento nao existe na lista! ";
+	}
 }
 
 void buscarElemento()
